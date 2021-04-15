@@ -11,6 +11,7 @@ docker-compose exec redis_acls redis-cli
 ## Update the default account
 
 1. Using the `ACL SETUSER` command set the password for the default account to `Sec&789`.
+    - ```ACL SETUSER default on >Sec&789 ~* +@all```
 1. Aftwards you should be able to run this command and get back an `OK` response: 
     ```
     AUTH default Sec&789
@@ -29,6 +30,7 @@ docker-compose exec redis_acls redis-cli
     ACL CAT dangerous
     ```
 1. Add a new user with a password and access to the `hash` category.
+    - ``` ACL SETUSER hash on >hash123 ~* -@all +@hash ```
 1. Authenticate using the new username and password using the `AUTH` comamnd.
 1. Verify proper access was granted
     A `SET` command should return the following error but the `HSET` command should not.
@@ -46,6 +48,8 @@ docker-compose exec redis_acls redis-cli
     mset bucket:1 dirt bucket:2 turf pail:1 sand
     ```
 1. Add a new user `bucket-reader` that is enabled with a password `redis123` with **read only* access to keys starting with `bucket:` 
+    - ```ACL SETUSER bucket-reader on >redis123 ~bucket:* -@all +get```     
+    Note: the order of the flags are important! `+get` is behind `-@all`
 1. Authenticate using the new username and password using the `AUTH` comamnd.
 1. Verify proper access was granted:
     - can get bucket:1
