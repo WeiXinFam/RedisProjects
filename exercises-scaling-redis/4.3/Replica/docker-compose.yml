@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  redis_replica:
+    build:
+      context: ./
+      network: host
+    ports:
+      - "6380:6380"

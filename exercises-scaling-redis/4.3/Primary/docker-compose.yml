@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  redis_primary:
+    build:
+      context: ./
+      network: host
+    ports:
+      - "6379:6379"
