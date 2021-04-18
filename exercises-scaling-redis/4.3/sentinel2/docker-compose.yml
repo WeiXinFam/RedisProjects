@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  redis_sentinel2:
+    build:
+      context: ./
+      network: host
+    ports:
+      - "5001:5001"
