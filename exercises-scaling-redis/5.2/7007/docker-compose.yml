@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  redis_7007:
+    build:
+      context: ./
+      # network: host
+    ports:
+      - "7007:7007"

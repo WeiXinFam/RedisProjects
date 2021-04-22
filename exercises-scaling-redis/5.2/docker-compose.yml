@@ -1,0 +1,46 @@
+# Not quite sure if this works
+
+version: "3.9"
+
+services:
+  redis_7000:
+    build:
+      context: ./7000/
+      # network: host
+    ports:
+      - "7000:7000"
+
+  redis_7001:
+    build:
+      context: ./7001/
+      # network: host
+    ports:
+      - "7001:7001"
+
+  redis_7002:
+    build:
+      context: ./7002/
+      # network: host
+    ports:
+      - "7002:7002"
+
+  redis_7003:
+    build:
+      context: ./7003/
+      # network: host
+    ports:
+      - "7003:7003"
+
+  redis_7004:
+    build:
+      context: ./7004/
+      # network: host
+    ports:
+      - "7004:7004"
+
+  redis_7005:
+    build:
+      context: ./7005/
+      # network: host
+    ports:
+      - "7005:7005"
